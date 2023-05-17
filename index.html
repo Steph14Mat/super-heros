@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SuperSearch - Trouvez votre super-héros préféré en un clin d'œil!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/3379e155de.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="img/star-g61c77f3a9_640.png" type="image/png">
+  <link rel="stylesheet" href="css/styles.min.css">
+</head>
+
+<body>
+  <div class="body">
+    <section class="header">
+      <div class="logo">
+        <img src="img/star-g61c77f3a9_640.png" alt="Logo SuperSearch">
+        <h1>SuperSearch</h1>
+      </div>
+      <p>Votre guide ultime dans l'univers des super-héros!<br>🦸‍♀️ Parcourez des milliers de profils de super-héros,
+        découvrez leurs pouvoirs extraordinaires ⚡, leurs histoires fascinantes 📖, et bien plus encore.<br>Que vous
+        soyez
+        fan
+        de Marvel, de DC, ou des deux, SuperSearch vous aide à trouver et à en apprendre plus sur vos
+        héros préférés en
+        quelques clics seulement! 👨‍💻 <br>Rejoignez la communauté SuperSearch aujourd'hui et laissez votre passion
+        pour
+        les
+        super-héros prendre son envol! 🚀</p>
+    </section>
+    <section id="superHeros" class="searchingSection">
+      <h2>Tapez le nom du super-héros dans la barre de recherche et dévoilez leurs secrets. L'aventure commence ici!
+      </h2>
+      <div class="search">
+        <input type="text" v-model="superHeroName" placeholder="Nom du super-héros...">
+      </div>
+      <div class="wrapper">
+        <div class="showHero" v-for="hero in herosData" :key="hero.id" @click="selectHero(hero)">
+          <img :src="hero.images.sm" :alt="hero.name">
+          <h3>{{hero.name}}</h3>
+        </div>
+      </div>
+    </section>
+  </div>
+  <section class="newWindow" v-show="selectedHero">
+    <div class="newWindow__wrapper">
+      <img src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/577-scarlet-spider.jpg">
+      <div>
+        <h3>Nom:</h3>
+        <ul>
+          <li>Combat:</li>
+          <li>Durabilité:</li>
+          <li>Intelligence:</li>
+          <li>Puissance:</li>
+          <li>Vitesse:</li>
+          <li>Force:</li>
+        </ul>
+      </div>
+      <div class="close" @click="selectedHero = null">❌</div>
+    </div>
+  </section>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+
+</html>
